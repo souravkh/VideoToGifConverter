@@ -11,6 +11,7 @@ A simple WPF application that converts MP4 videos to GIF format. Built with the 
 - 🔗 **RelayCommand & Value Converters** for Robust Interaction  
 
 ## 🗂️ Project Structure  
+```
 VideoToGifConverter/
 ├── Converter/
 │   └── BoolToVisibilityConverter.cs
@@ -34,7 +35,7 @@ VideoToGifConverter/
 ├── App.xaml.cs
 ├── MainWindow.xaml
 └── MainWindow.xaml.cs
-
+```
 
 
 ## ⚡ Technologies Used
