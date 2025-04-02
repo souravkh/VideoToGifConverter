@@ -1,0 +1,111 @@
+﻿<Window
+    x:Class="VideoToGifConverter.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:convertor="clr-namespace:VideoToGifConverter.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:folderComponent="clr-namespace:VideoToGifConverter.Views"
+    xmlns:local="clr-namespace:VideoToGifConverter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Mp4 To GIF Convertor"
+    Width="600"
+    Height="240"
+    MinWidth="600"
+    MinHeight="240"
+    MaxWidth="800"
+    MaxHeight="500"
+    Background="White"
+    ResizeMode="CanResizeWithGrip"
+    SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="ThreeDBorderWindow"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <convertor:BoolToVisibilityConverter x:Key="boolToVisibilty" />
+    </Window.Resources>
+    <Border
+        BorderBrush="#FF1B75D0"
+        BorderThickness="1"
+        CornerRadius="10">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                <GradientStop Offset="0" Color="WhiteSmoke" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" MinHeight="10" />
+                <RowDefinition
+                    Height="*"
+                    MinHeight="45"
+                    MaxHeight="45" />
+                <RowDefinition Height="2" MinHeight="2" />
+                <RowDefinition
+                    Height="*"
+                    MinHeight="45"
+                    MaxHeight="45" />
+                <RowDefinition Height="2" MinHeight="2" />
+                <RowDefinition Height="Auto" MinHeight="40" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="30" MinHeight="30" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+            <GroupBox
+                Grid.Row="1"
+                Grid.RowSpan="5"
+                Grid.Column="1"
+                Margin="-4,-2,-4,-2"
+                BorderBrush="#FF1B75D0"
+                BorderThickness="1">
+                <GroupBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2" />
+                    </Style>
+                </GroupBox.Resources>
+            </GroupBox>
+            <folderComponent:FileLocationUCView
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                DataContext="{Binding InputVm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <folderComponent:FileLocationUCView
+                Grid.Row="3"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                DataContext="{Binding OutputVm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <folderComponent:VideoListUCView
+                Grid.Row="5"
+                Grid.Column="1"
+                Height="Auto"
+                DataContext="{Binding VideoListVM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Grid Grid.Row="7" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="5" />
+                </Grid.ColumnDefinitions>
+                <folderComponent:ProgressBarUCView Margin="3,2,3,2" DataContext="{Binding ProgressBarComponentVM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button
+                    Grid.Column="1"
+                    Width="100"
+                    Height="24"
+                    MaxHeight="24"
+                    Margin="-30,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Background="#FF1B75D0"
+                    Command="{Binding ConvertCommand}"
+                    Content="Convert To GIF"
+                    FontFamily="Arial"
+                    FontSize="12"
+                    Foreground="White"
+                    Style="{StaticResource ResourceKey=roundButtonStyle}" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
