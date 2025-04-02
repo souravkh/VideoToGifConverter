@@ -52,3 +52,7 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+/.vs/VideoToGifConverter/DesignTimeBuild
+/.vs/VideoToGifConverter/FileContentIndex
+/.vs/ProjectEvaluation
+/.vs/VideoToGifConverter
