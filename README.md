@@ -8,7 +8,9 @@ A simple WPF application that converts MP4 videos to GIF format. Built with the 
 - ⚡ **Progress Bar** for Conversion Status  
 - 🎨 **Custom Styles & Triggers**  
 - 🔄 **MVVM Architecture** with ViewModels & Data Binding  
-- 🔗 **RelayCommand & Value Converters** for Robust Interaction  
+- 🔗 **RelayCommand & Value Converters** for Robust Interaction
+- 📊 **LINQ** for Efficient Data Querying & Filtering
+
 
 ## 🗂️ Project Structure  
 ```
