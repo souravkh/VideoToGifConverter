@@ -25,15 +25,15 @@ VideoToGifConverter/
 │   └── VideoListVM.cs
 ├── Views/
 │   ├── FileLocationUCView.xaml
-│   └── FileLocationUCView.xaml.cs
+│   ├── FileLocationUCView.xaml.cs
 │   ├── ProgressBarUCView.xaml
-│   └── ProgressBarUCView.xaml.cs
+│   ├── ProgressBarUCView.xaml.cs
 │   ├── VideoListUCView.xaml
 │   └── VideoListUCView.xaml.cs
 ├── App.xaml
 ├── App.xaml.cs
 ├── MainWindow.xaml
-├── MainWindow.xaml.cs
+└── MainWindow.xaml.cs
 
 
 
