@@ -12,26 +12,17 @@ namespace VideoToGifConverter.ViewModel
     /// Manages the input/output folder locations, updates the list of MP4 files, 
     /// and handles video-to-GIF conversion logic.
     /// </summary>
-    public class MainWindowVM : ObservableObject
+    [ObservableObject]
+    public partial class MainWindowVM
     {
         private VideoListVM _videoListVM;
         private Mp4ToGifHelper _mp4ToGifHelper;
 
-        private ProgressBarComponentVM _progressBarComponentVM = new ProgressBarComponentVM();
-
         /// <summary>
-        /// Gets or sets the ViewModel for the progress bar component.
-        /// Manages the progress bar's visibility, current value, and progress text.
+        /// ViewModel for managing the progress bar during conversion.
         /// </summary>
-        public ProgressBarComponentVM ProgressBarComponentVM
-        {
-            get => _progressBarComponentVM;
-            set
-            {
-                SetProperty(ref _progressBarComponentVM, value);
-                OnPropertyChanged(nameof(MainWindowVM));
-            }
-        }
+        [ObservableProperty]
+        private ProgressBarComponentVM _progressBarComponentVM = new ProgressBarComponentVM();
 
         /// <summary>
         /// Gets or sets the ViewModel for the list of MP4 videos.
@@ -43,33 +34,17 @@ namespace VideoToGifConverter.ViewModel
             set => SetProperty(ref _videoListVM, value);
         }
 
+        /// <summary>
+        /// ViewModel for selecting the input folder containing MP4 files.
+        /// </summary>
+        [ObservableProperty]
         private FolderComponentVM _inputVm;
 
         /// <summary>
-        /// Gets or sets the ViewModel for the input folder.
-        /// Triggers the MP4 file list update when changed.
+        /// ViewModel for selecting the output folder where GIFs will be saved.
         /// </summary>
-        public FolderComponentVM InputVm
-        {
-            get => _inputVm;
-            set
-            {
-                SetProperty(ref _inputVm, value);
-                UpdateMp4List();
-            }
-        }
-
+        [ObservableProperty]
         private FolderComponentVM _outputVm;
-
-        /// <summary>
-        /// Gets or sets the ViewModel for the output folder.
-        /// Determines where the converted GIF files will be saved.
-        /// </summary>
-        public FolderComponentVM OutputVm
-        {
-            get => _outputVm;
-            set => SetProperty(ref _outputVm, value);
-        }
 
         /// <summary>
         /// Command for triggering the video-to-GIF conversion process.
@@ -83,7 +58,7 @@ namespace VideoToGifConverter.ViewModel
         public MainWindowVM()
         {
             _mp4ToGifHelper = new Mp4ToGifHelper();
-            InputVm = new FolderComponentVM("Browser Input Location", "Input Folder");
+            InputVm = new FolderComponentVM("Browse Input Location", "Input Folder");
             InputVm.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(FolderComponentVM.Location))
@@ -93,7 +68,7 @@ namespace VideoToGifConverter.ViewModel
                 }
             };
 
-            OutputVm = new FolderComponentVM("Browser Output Location", "Output Folder");
+            OutputVm = new FolderComponentVM("Browse Output Location", "Output Folder");
             ConvertCommand = new RelayCommand(UpdateVideosToGif);
         }
 
@@ -195,13 +170,12 @@ namespace VideoToGifConverter.ViewModel
                         });
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-
-
 
         /// <summary>
         /// Checks if the output directory exists; if not, it creates the directory.

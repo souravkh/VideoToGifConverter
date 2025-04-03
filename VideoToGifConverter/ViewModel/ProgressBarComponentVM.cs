@@ -7,75 +7,24 @@ namespace VideoToGifConverter.ViewModel
     /// ViewModel for managing the progress bar component in the Video to GIF converter application.
     /// Handles progress updates, visibility, and status messages.
     /// </summary>
-    public class ProgressBarComponentVM : ObservableObject
+    public partial class ProgressBarComponentVM : ObservableObject
     {
         // Constants
         private readonly string PROGRESS_TEXT = "Progressing...";
         private readonly string PERCENTAGE_SYMBOL = "%";
 
         #region Properties
-
+        [ObservableProperty]
         private bool _isGridVisible = false;
-        public bool IsGridVisible
-        {
-            get => _isGridVisible;
-            set => SetProperty(ref _isGridVisible, value);
-        }
 
-        private Visibility _visibility = Visibility.Collapsed;
-
-        /// <summary>
-        /// Gets or sets the visibility of the progress bar component.
-        /// </summary>
-        public Visibility Visibility
-        {
-            get => _visibility;
-            set
-            {
-                SetProperty(ref _visibility, value, nameof(Visibility));
-                OnPropertyChanged(nameof(Visibility));
-            }
-        }
-
+        [ObservableProperty]
         private string _progressText = string.Empty;
 
-        /// <summary>
-        /// Gets or sets the progress text displayed on the progress bar.
-        /// </summary>
-        public string ProgressText
-        {
-            get => _progressText;
-            set => SetProperty(ref _progressText, value, nameof(ProgressText));
-        }
+        [ObservableProperty]
+        private double _maximumValue = 0;
 
-        private double _maxValue = 0;
-
-        /// <summary>
-        /// Gets or sets the maximum value for the progress bar.
-        /// </summary>
-        public double MaximumValue
-        {
-            get => _maxValue;
-            set
-            {
-                SetProperty(ref _maxValue, value);
-                OnPropertyChanged(nameof(ProgressBarComponentVM));
-            }
-        }
-
+        [ObservableProperty]
         private double _currentValue = 0;
-
-        /// <summary>
-        /// Gets or sets the current value of the progress bar.
-        /// </summary>
-        public double CurrentValue
-        {
-            get => _currentValue;
-            set
-            {
-                SetProperty(ref _currentValue, value, nameof(CurrentValue));
-            }
-        }
 
         #endregion
 
