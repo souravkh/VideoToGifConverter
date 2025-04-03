@@ -8,15 +8,15 @@ A simple WPF application that converts MP4 videos to GIF format. Built with the 
 ⚡ Progress Bar for Conversion Status  
 🎨 Custom Styles & Triggers  
 🔄 MVVM Architecture with ViewModels & Data Binding  
-   - **With Attributes:** Simplifies property change notifications using CommunityToolkit.Mvvm.  
-   - **Without Attributes:** Provides full control over property management and notifications.
+   **With Attributes:** Simplifies property change notifications using CommunityToolkit.Mvvm.  
+   **Without Attributes:** Provides full control over property management and notifications.
 🔗 RelayCommand & Value Converters for Robust Interaction
 📊 LINQ for Efficient Data Querying & Filtering  
 🏗️ MVVM with and without Attributes for Flexibility  
 🎯 **Style Direction:**
-   - **App Style:** Global theming for the entire application.  
-   - **Component Style:** Reusable styles for UI components (buttons,UserControl).  
-   - **Direct UI Element Style:** Inline styles for specific UI elements.
+   **App Style:** Global theming for the entire application.  
+   **Component Style:** Reusable styles for UI components (buttons,UserControl).  
+   **Direct UI Element Style:** Inline styles for specific UI elements.
 
 ## 🗂️ Project Structure  
 ```
