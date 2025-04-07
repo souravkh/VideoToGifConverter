@@ -39,6 +39,11 @@ VideoToGifConverter/
 ├── App.xaml.cs
 ├── MainWindow.xaml
 └── MainWindow.xaml.cs
+VideoToGifConverter.UnitTests/
+├── ConverterTests/
+│   └── BoolToVisibilityConverterTests.cs
+├── HelperTests/
+│   └── Mp4ToGifHelperTests.cs
 ```
 
 
@@ -47,7 +52,8 @@ VideoToGifConverter/
 - **MVVM Pattern** (Model-View-ViewModel)  
 - **Microsoft Community Toolkit** (MVVM Helpers)  
 - **MediaToolkit** (Video Processing)  
-- **C# (.NET 8)**  
+- **C# (.NET 8)**
+- **Nunit** (Unit Test Framework)
 
 ## 🏗️ Getting Started
 
