@@ -1,5 +1,5 @@
 # 🎥 Video to GIF Converter
-A simple WPF application that converts MP4 videos to GIF format. Built with the MVVM pattern, leveraging the **Microsoft Community Toolkit** for clean and maintainable code. Designed for reusability with modular components, custom styles, Linq and dynamic UI interactions.
+A simple WPF application that converts MP4 videos to GIF format. Built with the MVVM pattern, leveraging the **Microsoft Community Toolkit** for clean and maintainable code. Designed for reusability with modular components, custom styles, Linq, dynamic UI interactions,and robust testing using Test-Driven Development (TDD) using NUnit.
 
 ## 🚀 Features
 - ✅ **MP4 to GIF Conversion**  
@@ -11,6 +11,7 @@ A simple WPF application that converts MP4 videos to GIF format. Built with the 
 - 📊 **LINQ for Efficient Data Querying & Filtering**  
 - 🏗️ **MVVM with and without Attributes for Flexibility**  
 - 🔗 **RelayCommand & Value Converters for Robust Interaction**
+- 🧪 **Test-Driven Development (TDD) with NUnit for Reliable Code**
  
 
 ## 🗂️ Project Structure  
