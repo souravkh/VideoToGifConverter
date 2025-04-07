@@ -53,7 +53,7 @@ VideoToGifConverter.UnitTests/
 - **Microsoft Community Toolkit** (MVVM Helpers)  
 - **MediaToolkit** (Video Processing)  
 - **C# (.NET 8)**
-- **Nunit** (Unit Test Framework)
+- **NUnit** (Unit Test Framework)
 
 ## 🏗️ Getting Started
 
