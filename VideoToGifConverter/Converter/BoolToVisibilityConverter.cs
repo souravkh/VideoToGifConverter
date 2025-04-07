@@ -7,7 +7,7 @@ namespace VideoToGifConverter.Converter
     /// <summary>
     /// A value converter that converts a boolean value to a <see cref="Visibility"/> value and vice versa.
     /// </summary>
-    internal class BoolToVisibilityConverter : IValueConverter
+    public class BoolToVisibilityConverter : IValueConverter
     {
         /// <summary>
         /// Converts a boolean value to a <see cref="Visibility"/> value.

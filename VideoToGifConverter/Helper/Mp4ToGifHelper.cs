@@ -17,7 +17,7 @@ namespace VideoToGifConverter.Helper
         /// <returns>True if the conversion was successful; otherwise, false.</returns>
         public bool ConvertVideoToGIf(string fileName, string filePath, string outputDir)
         {
-            if (!string.IsNullOrEmpty(filePath) && !string.IsNullOrEmpty(fileName))
+            if (!string.IsNullOrWhiteSpace(filePath) && !string.IsNullOrWhiteSpace(fileName))
             {
                 string gifFileName = fileName + GIF_EXT;
                 string gifFilePath = Path.Combine(outputDir, gifFileName);
