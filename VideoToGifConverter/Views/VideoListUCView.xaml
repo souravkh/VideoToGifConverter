@@ -9,7 +9,6 @@
     d:DesignHeight="100"
     d:DesignWidth="500"
     mc:Ignorable="d">
-
     <Grid Visibility="{Binding Visibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
         <Grid.RowDefinitions>
             <RowDefinition Height="2" />
@@ -24,7 +23,7 @@
         <ListView
             Grid.Row="1"
             Grid.Column="1"
-            MaxHeight="246"
+            MaxHeight="244"
             Background="#F0F8FF"
             BorderBrush="#1E90FF"
             BorderThickness="1"
@@ -33,7 +32,7 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Width="30" HeaderContainerStyle="{StaticResource CustomGridViewColumnHeader}">
+                        <GridViewColumn Width="30" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -42,8 +41,7 @@
                         </GridViewColumn>
                         <GridViewColumn
                             Width="Auto"
-                            Header="File Name"
-                            HeaderContainerStyle="{StaticResource CustomGridViewColumnHeader}">
+                            Header="File Name">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding FileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

@@ -114,7 +114,7 @@ namespace VideoToGifConverter.ViewModel
                     {
                         Mp4Objects = new System.Collections.ObjectModel.ObservableCollection<Mp4Object>(mp4Objects)
                     };
-                    _videoListVM.Visibility = Visibility.Visible;
+                    VideoListVM.Visibility = Visibility.Visible;
                     IsConvertBottonVisible = true;
                     OnPropertyChanged(nameof(VideoListVM));
                 }
@@ -141,7 +141,7 @@ namespace VideoToGifConverter.ViewModel
             {
                 const string OUTPUT = "Output";
                 string outPutLocation = Path.Combine(inputLocation, OUTPUT);
-                _outputVm.Location = outPutLocation;
+                OutputVm.Location = outPutLocation;
             }
         }
 
@@ -151,7 +151,6 @@ namespace VideoToGifConverter.ViewModel
         /// </summary>
         public void UpdateVideosToGif()
         {
-            IsConvertBottonVisible = false;
             try
             {
                 string outputLocation = OutputVm?.Location ?? string.Empty;
@@ -167,6 +166,7 @@ namespace VideoToGifConverter.ViewModel
                     {
                         Task.Run(() =>
                         {
+                            IsConvertBottonVisible = false;
                             ProgressBarComponentVM.MaximumValue = selectedMp4Objects.Count;
                             ProgressBarComponentVM.IsGridVisible = true;
 
@@ -183,6 +183,7 @@ namespace VideoToGifConverter.ViewModel
                             ProgressBarComponentVM.ProgressText = string.Empty;
                             ProgressBarComponentVM.IsGridVisible = false;
                             ProgressBarComponentVM.MaximumValue = 0;
+                            IsConvertBottonVisible = true;
                         });
                     }
                 }
@@ -190,9 +191,6 @@ namespace VideoToGifConverter.ViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            finally {
-                IsConvertBottonVisible = true;
             }
         }
 
