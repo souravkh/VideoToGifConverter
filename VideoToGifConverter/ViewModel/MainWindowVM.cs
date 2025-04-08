@@ -18,6 +18,7 @@ namespace VideoToGifConverter.ViewModel
     {
         private VideoListVM _videoListVM=new VideoListVM();
         private Mp4ToGifHelper _mp4ToGifHelper;
+        private readonly string[] SUPPORTED_FORMATS = new[] { "*.mp4", "*.avi", "*.mov", "*.webm" };
 
         /// <summary>
         /// ViewModel for managing the progress bar during conversion.
@@ -88,8 +89,12 @@ namespace VideoToGifConverter.ViewModel
         /// <returns>A list of MP4 file paths found in the directory.</returns>
         public List<string> GetMP4FilesFromDir(string dir)
         {
-            return Directory.GetFiles(dir, "*.mp4", SearchOption.AllDirectories)
-                ?.ToList() ?? new List<string>();
+            return SUPPORTED_FORMATS?.
+                SelectMany(format => Directory.GetFiles(dir,
+                format, 
+                SearchOption.AllDirectories))?
+                .ToList()
+                ??new List<string>();
         }
 
         /// <summary>

@@ -32,16 +32,14 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Width="30" >
+                        <GridViewColumn Width="30">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn
-                            Width="Auto"
-                            Header="File Name">
+                        <GridViewColumn Width="Auto" Header="File Name">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding FileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
