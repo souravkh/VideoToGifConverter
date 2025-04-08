@@ -9,9 +9,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Mp4 To GIF Convertor"
     Width="600"
-    Height="240"
+    Height="200"
     MinWidth="600"
-    MinHeight="240"
+    MinHeight="200"
     MaxWidth="800"
     MaxHeight="500"
     Background="White"
@@ -20,17 +20,15 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
-    <Window.Resources>
-        <convertor:BoolToVisibilityConverter x:Key="boolToVisibilty" />
-    </Window.Resources>
     <Border
-        BorderBrush="#FF1B75D0"
-        BorderThickness="1"
+        BorderBrush="#B3E5FC"
+        BorderThickness="2"
         CornerRadius="10">
         <Border.Background>
-            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
-                <GradientStop Offset="0" Color="WhiteSmoke" />
-            </LinearGradientBrush>
+            <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                <GradientStop Offset="1" Color="#F0F4F8" />
+                <GradientStop Offset="0" Color="#FFFFFF" />
+            </RadialGradientBrush>
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -50,9 +48,12 @@
                     MinHeight="45"
                     MaxHeight="45" />
                 <RowDefinition Height="2" MinHeight="2" />
-                <RowDefinition Height="Auto" MinHeight="40" />
+                <RowDefinition Height="Auto" MinHeight="1" />
                 <RowDefinition Height="5" />
-                <RowDefinition Height="30" MinHeight="30" />
+                <RowDefinition
+                    Height="30"
+                    MinHeight="30"
+                    MaxHeight="30" />
                 <RowDefinition Height="10" />
             </Grid.RowDefinitions>
             <GroupBox
@@ -60,8 +61,8 @@
                 Grid.RowSpan="5"
                 Grid.Column="1"
                 Margin="-4,-2,-4,-2"
-                BorderBrush="#FF1B75D0"
-                BorderThickness="1">
+                BorderBrush="#B3E5FC"
+                BorderThickness="2">
                 <GroupBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="2" />
@@ -89,7 +90,7 @@
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
-                <folderComponent:ProgressBarUCView Margin="3,2,3,2" DataContext="{Binding ProgressBarComponentVM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <folderComponent:ProgressBarUCView Margin="3,3,3,2" DataContext="{Binding ProgressBarComponentVM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Button
                     Grid.Column="1"
                     Width="100"
@@ -98,13 +99,15 @@
                     Margin="-30,0,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Background="#FF1B75D0"
+                    Background="#1E90FF"
                     Command="{Binding ConvertCommand}"
                     Content="Convert To GIF"
                     FontFamily="Arial"
                     FontSize="12"
                     Foreground="White"
-                    Style="{StaticResource ResourceKey=roundButtonStyle}" />
+                    IsEnabled="{Binding IsConvertBottonVisible, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource ResourceKey=roundButtonStyle}"
+                    Visibility="{Binding IsConvertBottonVisible, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ResourceKey=BoolToVisibilty}}" />
             </Grid>
         </Grid>
     </Border>

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.IO;
+using System.Windows;
 using System.Windows.Input;
 using VideoToGifConverter.Helper;
 using VideoToGifConverter.Model;
@@ -15,7 +16,7 @@ namespace VideoToGifConverter.ViewModel
     [ObservableObject]
     public partial class MainWindowVM
     {
-        private VideoListVM _videoListVM;
+        private VideoListVM _videoListVM=new VideoListVM();
         private Mp4ToGifHelper _mp4ToGifHelper;
 
         /// <summary>
@@ -23,6 +24,14 @@ namespace VideoToGifConverter.ViewModel
         /// </summary>
         [ObservableProperty]
         private ProgressBarComponentVM _progressBarComponentVM = new ProgressBarComponentVM();
+
+        /// <summary>
+        /// ViewModel property that determines the visibility of the Convert button in the UI.
+        /// When set to <c>true</c>, the button will be visible; when set to <c>false</c>, it will be hidden.
+        /// This property supports automatic UI updates through data binding.
+        /// </summary>
+        [ObservableProperty]
+        private bool _isConvertBottonVisible = false;
 
         /// <summary>
         /// Gets or sets the ViewModel for the list of MP4 videos.
@@ -89,6 +98,7 @@ namespace VideoToGifConverter.ViewModel
         /// </summary>
         public void UpdateMp4List()
         {
+            
             if (!string.IsNullOrEmpty(_inputVm?.Location))
             {
                 var mp4List = GetMP4FilesFromDir(_inputVm?.Location);
@@ -104,13 +114,19 @@ namespace VideoToGifConverter.ViewModel
                     {
                         Mp4Objects = new System.Collections.ObjectModel.ObservableCollection<Mp4Object>(mp4Objects)
                     };
+                    _videoListVM.Visibility = Visibility.Visible;
+                    IsConvertBottonVisible = true;
                     OnPropertyChanged(nameof(VideoListVM));
                 }
             }
             else
             {
-                VideoListVM = null;  // Clear if no files found
-                OnPropertyChanged(nameof(VideoListVM));
+                if (VideoListVM != null)
+                {
+                    VideoListVM.Visibility = Visibility.Collapsed;
+                    OnPropertyChanged(nameof(VideoListVM));
+                }
+                IsConvertBottonVisible=false;
             }
         }
 
@@ -135,6 +151,7 @@ namespace VideoToGifConverter.ViewModel
         /// </summary>
         public void UpdateVideosToGif()
         {
+            IsConvertBottonVisible = false;
             try
             {
                 string outputLocation = OutputVm?.Location ?? string.Empty;
@@ -162,11 +179,7 @@ namespace VideoToGifConverter.ViewModel
                                     ProgressBarComponentVM.UpdateProgress();
                                 }
                             }
-
                             ProgressBarComponentVM.UpdateSuccessfullMessage();
-                            ProgressBarComponentVM.ProgressText = string.Empty;
-                            ProgressBarComponentVM.IsGridVisible = false;
-                            ProgressBarComponentVM.MaximumValue = 0;
                         });
                     }
                 }
@@ -175,7 +188,38 @@ namespace VideoToGifConverter.ViewModel
             {
                 Console.WriteLine(ex.Message);
             }
+            finally {
+                IsConvertBottonVisible = true;
+            }
         }
+
+        /// <summary>
+        /// Resets the properties of child ViewModels to their default states.
+        /// This includes clearing progress text, hiding the progress grid,
+        /// resetting the maximum value, hiding the video list, and clearing 
+        /// input/output locations.
+        /// </summary>
+        public void ResetChildViewModels()
+        {
+            // Clear the progress text in the ProgressBar ViewModel
+            ProgressBarComponentVM.ProgressText = string.Empty;
+
+            // Hide the progress grid
+            ProgressBarComponentVM.IsGridVisible = false;
+
+            // Reset the maximum value of the progress bar to zero
+            ProgressBarComponentVM.MaximumValue = 0;
+
+            // Collapse the visibility of the Video List ViewModel
+            VideoListVM.Visibility = Visibility.Collapsed;
+
+            // Clear the location in the Input ViewModel
+            InputVm.Location = string.Empty;
+
+            // Clear the location in the Output ViewModel
+            OutputVm.Location = string.Empty;
+        }
+
 
         /// <summary>
         /// Checks if the output directory exists; if not, it creates the directory.

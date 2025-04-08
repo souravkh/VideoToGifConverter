@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Windows;
 using VideoToGifConverter.Model;
 
 namespace VideoToGifConverter.ViewModel
@@ -17,5 +18,14 @@ namespace VideoToGifConverter.ViewModel
         /// </summary>
         [ObservableProperty]
         private ObservableCollection<Mp4Object> _mp4Objects = new ObservableCollection<Mp4Object>();
+
+        /// <summary>
+        /// Controls the visibility of the Grid in the UI.
+        /// When set to <see cref="Visibility.Visible"/>, the Grid is displayed.
+        /// When set to <see cref="Visibility.Collapsed"/>, the Grid is Collapsed.
+        /// This property is bound to the UI to dynamically show or hide elements as needed.
+        /// </summary>
+        [ObservableProperty]
+        private Visibility _visibility = Visibility.Collapsed;
     }
 }

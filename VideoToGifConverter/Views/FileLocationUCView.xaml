@@ -105,7 +105,7 @@
             Grid.Row="1"
             Grid.Column="5"
             MaxHeight="24"
-            Background="#FF1B75D0"
+            Background="#1E90FF"
             Command="{Binding BrowserDirectoryCommand}"
             Content="Browse"
             FontFamily="Arial"
