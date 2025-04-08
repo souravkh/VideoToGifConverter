@@ -180,6 +180,9 @@ namespace VideoToGifConverter.ViewModel
                                 }
                             }
                             ProgressBarComponentVM.UpdateSuccessfullMessage();
+                            ProgressBarComponentVM.ProgressText = string.Empty;
+                            ProgressBarComponentVM.IsGridVisible = false;
+                            ProgressBarComponentVM.MaximumValue = 0;
                         });
                     }
                 }

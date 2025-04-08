@@ -29,8 +29,8 @@
             </Style>
             <converter:BoolToVisibilityConverter x:Key="BoolToVisibilty" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Views/ResourceDictionaries/ProgressBarRD.xaml"/>
-                <ResourceDictionary Source="Views/ResourceDictionaries/ListViewRD.xaml"/>
+                <ResourceDictionary Source="Views/ResourceDictionaries/ProgressBarRD.xaml" />
+                <ResourceDictionary Source="Views/ResourceDictionaries/ListViewRD.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
