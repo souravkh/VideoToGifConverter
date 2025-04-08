@@ -10,7 +10,7 @@
     d:DesignWidth="500"
     mc:Ignorable="d">
 
-    <Grid Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+    <Grid Visibility="{Binding Visibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
         <Grid.RowDefinitions>
             <RowDefinition Height="2" />
             <RowDefinition Height="Auto" />
@@ -28,41 +28,22 @@
             Background="#F0F8FF"
             BorderBrush="#1E90FF"
             BorderThickness="1"
+            ItemContainerStyle="{StaticResource ResourceKey=CustomListViewItem}"
             ItemsSource="{Binding Mp4Objects, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-            <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Background" Value="#E6EAF1" />
-                    <Setter Property="Foreground" Value="#4B4B4B" />
-                    <Setter Property="FontWeight" Value="DemiBold" />
-                    <Setter Property="FontSize" Value="12" />
-                    <Setter Property="BorderBrush" Value="#D1D9E6" />
-                    <Setter Property="BorderThickness" Value="0,1,1,0" />
-                    <Setter Property="Padding" Value="2" />
-                    <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="MaxHeight" Value="28" />
-                </Style>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="Padding" Value="5" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#D3E9FF" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Width="30">
+                        <GridViewColumn Width="30" HeaderContainerStyle="{StaticResource CustomGridViewColumnHeader}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Width="Auto" Header="File Name">
+                        <GridViewColumn
+                            Width="Auto"
+                            Header="File Name"
+                            HeaderContainerStyle="{StaticResource CustomGridViewColumnHeader}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding FileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

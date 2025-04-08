@@ -27,6 +27,12 @@
     <Page Update="Views\ProgressBarUCView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\ResourceDictionaries\ListViewRD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ResourceDictionaries\ProgressBarRD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\VideoListUCView.xaml">
       <SubType>Designer</SubType>
     </Page>

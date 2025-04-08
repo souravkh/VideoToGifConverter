@@ -2,29 +2,36 @@
     x:Class="VideoToGifConverter.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:VideoToGifConverter"
     xmlns:converter="clr-namespace:VideoToGifConverter.Converter"
+    xmlns:local="clr-namespace:VideoToGifConverter"
+    xmlns:rd="ResourceDictionaries"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="roundButtonStyle" TargetType="Button">
-            <Setter Property="BorderBrush" Value="White" />
-            <Setter Property="FontSize" Value="12" />
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="12" />
-                    <Setter Property="Effect">
-                        <Setter.Value>
-                            <DropShadowEffect
-                                BlurRadius="0"
-                                Direction="300"
-                                Opacity="0.4"
-                                ShadowDepth="3"
-                                Color="Black" />
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Style.Resources>
-        </Style>
-        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilty" />
+        <ResourceDictionary>
+            <Style x:Key="roundButtonStyle" TargetType="Button">
+                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="FontSize" Value="12" />
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="12" />
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect
+                                    BlurRadius="0"
+                                    Direction="300"
+                                    Opacity="0.4"
+                                    ShadowDepth="3"
+                                    Color="Black" />
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Style.Resources>
+            </Style>
+            <converter:BoolToVisibilityConverter x:Key="BoolToVisibilty" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Views/ResourceDictionaries/ProgressBarRD.xaml"/>
+                <ResourceDictionary Source="Views/ResourceDictionaries/ListViewRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
