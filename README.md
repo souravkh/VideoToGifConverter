@@ -29,6 +29,9 @@ VideoToGifConverter/
 │   ├── ProgressBarComponentVM.cs
 │   └── VideoListVM.cs
 ├── Views/
+│   ├── ResourceDictionaries/
+│      ├── ListViewRD.xaml
+│      ├── ProgressBarRD.xaml
 │   ├── FileLocationUCView.xaml
 │   ├── FileLocationUCView.xaml.cs
 │   ├── ProgressBarUCView.xaml
